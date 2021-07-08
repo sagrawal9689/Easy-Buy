@@ -20,6 +20,10 @@ h2 {
   margin: 0.1rem;
 }
 
+.navbar{
+  padding: 1rem 0;
+}
+
 /* carousel */
 .carousel-item-next,
 .carousel-item-prev,
