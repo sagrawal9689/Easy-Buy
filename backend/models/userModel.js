@@ -14,7 +14,7 @@ const userSchema = mongoose.Schema(
     },
     password: {
       type: String,
-      required: true,
+      required: true
     },
     isAdmin: {
       type: Boolean,
@@ -31,14 +31,15 @@ userSchema.methods.matchPassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password)
 }
 
-userSchema.pre('save', async function (next) {
-  if (!this.isModified('password')) {
-    next()
-  }
+userSchema.pre('save', async function(next) {
+  // Only run this function if password was actually modified
+  if (!this.isModified('password')) return next();
 
-  const salt = await bcrypt.genSalt(10)
-  this.password = await bcrypt.hash(this.password, salt)
-})
+  // Hash the password with cost of 12
+  this.password = await bcrypt.hash(this.password, 12);
+
+  next();
+});
 
 const User = mongoose.model('User', userSchema)
 
