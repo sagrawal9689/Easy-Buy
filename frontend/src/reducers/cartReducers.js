@@ -5,7 +5,6 @@ export const cartReducer= (state= { cartItems:[] , shippingAddress: {} , },actio
         case 'CART_ADD_ITEM':
             const item= action.payload
 
-            console.log(state)
 
             const existItem= state.cartItems.find((x)=> x.product=== item.product)
 
@@ -46,7 +45,7 @@ export const cartReducer= (state= { cartItems:[] , shippingAddress: {} , },actio
             case 'RESET_SHIPPING_ADDRESS':
                 return {
                     ...state,
-                shippingAddress: null
+                shippingAddress: {}
                 }
         default:
 

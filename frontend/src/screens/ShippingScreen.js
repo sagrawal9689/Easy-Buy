@@ -10,9 +10,16 @@ const ShippingScreen = ({ history }) => {
 
   const { userInfo }= useSelector(state => state.userLogin)
 
-  const [address, setAddress] = useState(shippingAddress.address)
-  const [city, setCity] = useState(shippingAddress.city)
-  const [postalCode, setPostalCode] = useState(shippingAddress.postalCode)
+  const [address, setAddress] = useState()
+  const [city, setCity] = useState()
+  const [postalCode, setPostalCode] = useState()
+
+  if(shippingAddress.address)
+  {
+    setAddress(shippingAddress.address);
+    setCity(shippingAddress.city)
+    setPostalCode(shippingAddress.postalCode)
+  }
 
   const dispatch = useDispatch()
 
@@ -27,7 +34,7 @@ const ShippingScreen = ({ history }) => {
       {
         history.push('/login?redirect=shipping')
       }
-  })
+  },[userInfo,history])
 
   return (
     <FormContainer>
