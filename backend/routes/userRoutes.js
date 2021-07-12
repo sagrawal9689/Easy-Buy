@@ -4,7 +4,6 @@ import {
   getUsers,
   getUserById,
   deleteUser,
-  updateUser,
   authUser,
   getUserProfile,
   registerUser
@@ -21,6 +20,5 @@ router
   .route('/:id')
   .get(getUserById)
   .delete(deleteUser)
-  .put(updateUser)
 
 export default router

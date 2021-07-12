@@ -49,11 +49,6 @@ const deleteUser= catchAsync(async(req,res,next)=>{
 })
 
 
-const updateUser= catchAsync(async(req,res,next)=>{
-
-    res.send('route not setup yet')
-})
-
 const authUser= catchAsync(async(req,res,next)=>{
 
     const { email, password } = req.body;
@@ -115,12 +110,12 @@ const registerUser = catchAsync (async(req, res,next) => {
   }
 })
 
+
 export{
   registerUser,
     getUsers,
   getUserById,
   deleteUser,
-  updateUser,
   authUser,
   getUserProfile
 }

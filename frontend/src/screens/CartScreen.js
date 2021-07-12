@@ -6,7 +6,7 @@ import { Row, Col, ListGroup, Image, Form, Button, Card } from 'react-bootstrap'
 import Message from '../components/Message'
 import { addToCart , removeFromCart} from '../actions/cartActions'
 
-const CartScreen = ({match, location}) => {
+const CartScreen = ({match, location, history}) => {
 
     const productId = match.params.id
 
@@ -29,7 +29,7 @@ const CartScreen = ({match, location}) => {
   
 
     const checkoutHandler=()=>{
-      console.log('chechout')
+      history.push('/login?redirect=shipping')
     }
 
     return (
