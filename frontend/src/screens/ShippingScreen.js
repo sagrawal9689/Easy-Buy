@@ -5,8 +5,6 @@ import FormContainer from '../components/FormContainer'
 import { saveShippingAddress } from '../actions/cartActions'
 
 const ShippingScreen = ({ history }) => {
-  const cart = useSelector((state) => state.cart)
-  const { shippingAddress } = cart
 
   const { userInfo }= useSelector(state => state.userLogin)
 
@@ -14,12 +12,6 @@ const ShippingScreen = ({ history }) => {
   const [city, setCity] = useState()
   const [postalCode, setPostalCode] = useState()
 
-  if(shippingAddress.address)
-  {
-    setAddress(shippingAddress.address);
-    setCity(shippingAddress.city)
-    setPostalCode(shippingAddress.postalCode)
-  }
 
   const dispatch = useDispatch()
 
