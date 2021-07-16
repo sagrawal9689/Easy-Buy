@@ -34,7 +34,7 @@ export const createOrder = (order) => async (dispatch, getState) => {
         error.response && error.response.data.message
           ? error.response.data.message
           : error.message
-        if (message === 'Invalid token. Please log in again!' || message === 'Your token has expired! Please log in again.') {
+        if (message === 'Invalid token. Please log in again!' || message === 'Your token has expired! Please log in again.' || message==='jwt expired') {
           dispatch(logout())
         }
       dispatch({
@@ -71,13 +71,12 @@ export const createOrder = (order) => async (dispatch, getState) => {
         error.response && error.response.data.message
           ? error.response.data.message
           : error.message
-      if (message === 'Invalid token. Please log in again!' || message === 'Your token has expired! Please log in again.') {
+      if (message === 'Invalid token. Please log in again!' || message === 'Your token has expired! Please log in again.' || message==='jwt expired') {
         dispatch(logout())
       }
-      dispatch({
+       dispatch({
         type: 'ORDER_DETAILS_FAIL',
         payload: message,
       })
     }
   }
-  

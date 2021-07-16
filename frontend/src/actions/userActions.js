@@ -111,7 +111,7 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
           ? error.response.data.message
           : error.message
 
-      if (message === 'Invalid token. Please log in again!' || message === 'Your token has expired! Please log in again.') {
+      if (message === 'Invalid token. Please log in again!' || message === 'Your token has expired! Please log in again.' || message==='jwt expired') {
         dispatch(logout())
       }
       dispatch({

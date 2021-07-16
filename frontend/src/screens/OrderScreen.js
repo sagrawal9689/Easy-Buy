@@ -19,6 +19,8 @@ const OrderScreen = ({ match }) => {
     dispatch(getOrderDetails(orderId))
   }, [])
 
+  console.log(loading)
+
   return loading ? (
     <Loader />
   ) : error ? (

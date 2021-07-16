@@ -43,8 +43,6 @@ export const orderCreateReducer = (state = {}, action) => {
           error: action.payload,
         }
 
-      case 'ORDER_CREATE_RESET':
-        return {}
       default:
         return state
     }
