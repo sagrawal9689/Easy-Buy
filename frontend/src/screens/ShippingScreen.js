@@ -8,9 +8,9 @@ const ShippingScreen = ({ history }) => {
 
   const { userInfo }= useSelector(state => state.userLogin)
 
-  const [address, setAddress] = useState()
-  const [city, setCity] = useState()
-  const [postalCode, setPostalCode] = useState()
+  const [address, setAddress] = useState('')
+  const [city, setCity] = useState('')
+  const [postalCode, setPostalCode] = useState('')
 
 
   const dispatch = useDispatch()
