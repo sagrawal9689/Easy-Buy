@@ -40,7 +40,13 @@ const getOrderById = catchAsync(async (req, res,next) => {
   }
 })
 
+const getMyOrders = catchAsync(async (req, res) => {
+  const orders = await Order.find({ user: req.user._id })
+  res.json(orders)
+})
+
 export {
     addOrderItems,
-    getOrderById
+    getOrderById,
+    getMyOrders
 }
