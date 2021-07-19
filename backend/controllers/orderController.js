@@ -45,8 +45,30 @@ const getMyOrders = catchAsync(async (req, res) => {
   res.json(orders)
 })
 
+const updateOrderToPaid = catchAsync(async (req, res) => {
+  const order = await Order.findById(req.params.id)
+
+  if (order) {
+    order.isPaid = true
+    order.paidAt = Date.now()
+    order.paymentResult = {
+      id: req.body.id,
+      status: req.body.status,
+      update_time: req.body.update_time,
+      email_address: req.body.payer.email_address,
+    }
+
+    const updatedOrder = await order.save()
+
+    res.json(updatedOrder)
+  } else {
+    return next(new AppError('Order not found',404))
+  }
+})
+
 export {
     addOrderItems,
     getOrderById,
-    getMyOrders
+    getMyOrders,
+    updateOrderToPaid
 }
