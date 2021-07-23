@@ -4,7 +4,7 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import { productListReduer, productDetailsReducer } from './reducers/productReducers'
 import { cartReducer } from './reducers/cartReducers'
 import { userDetailsReducer, userLoginReducer, userRegisterReducer } from './reducers/userReducers'
-import { orderCreateReducer, orderDetailsReducer, orderPayReducer } from './reducers/orderReducers'
+import { orderCreateReducer, orderDetailsReducer, orderListMyReducer, orderPayReducer } from './reducers/orderReducers'
 
 const reducer= combineReducers({
     productList: productListReduer,
@@ -15,7 +15,8 @@ const reducer= combineReducers({
     userDetails: userDetailsReducer,
     orderCreate: orderCreateReducer,
     orderDetails: orderDetailsReducer,
-    orderPay: orderPayReducer
+    orderPay: orderPayReducer,
+    orderListMy: orderListMyReducer 
 })
 
 const cartItemsFromStorage= localStorage.getItem('cartItems') ? (JSON.parse(localStorage.getItem('cartItems'))): []

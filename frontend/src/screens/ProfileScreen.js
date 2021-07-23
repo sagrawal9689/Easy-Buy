@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react'
-import { Row, Col, Card } from 'react-bootstrap'
+import { Row, Col, Card, Table ,Button} from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
+import { LinkContainer } from 'react-router-bootstrap'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
 import { getUserDetails} from '../actions/userActions'
+import { listMyOrders } from '../actions/orderActions'
 
 const ProfileScreen = ({ location, history }) => {
 
@@ -24,8 +26,11 @@ const ProfileScreen = ({ location, history }) => {
         dispatch(getUserDetails('profile'))
       }
     }
+    dispatch(listMyOrders())
   }, [dispatch, history, userInfo, user])
 
+  const orderListMy = useSelector((state) => state.orderListMy)
+  const { loading: loadingOrders, error: errorOrders, orders } = orderListMy
 
   return (
     <Row>
@@ -50,7 +55,7 @@ const ProfileScreen = ({ location, history }) => {
       </Col>
       <Col md={9}>
         <h2>My Orders</h2>
-        {/* {loadingOrders ? (
+        { loadingOrders ? (
           <Loader />
         ) : errorOrders ? (
           <Message variant='danger'>{errorOrders}</Message>
@@ -92,12 +97,12 @@ const ProfileScreen = ({ location, history }) => {
                         Details
                       </Button>
                     </LinkContainer>
-                  </td>
+                  </td> 
                 </tr>
               ))}
             </tbody>
           </Table>
-        )} */}
+        )} 
       </Col>
     </Row>
   )
