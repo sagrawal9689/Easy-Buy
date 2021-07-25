@@ -40,6 +40,24 @@ const protect = catchAsync(async (req, res, next) => {
     next();
   });
 
+const admin=catchAsync((req,res,next)=>{
+    const user= req.user;
+    if(user && user.isAdmin)
+    {
+      next()
+    }
+    else
+    {
+      return next(
+        new AppError(
+          'Not authorized as an admin',
+          401
+        )
+      )
+    }
+})
+
   export {
-      protect
+      protect,
+      admin
   }
