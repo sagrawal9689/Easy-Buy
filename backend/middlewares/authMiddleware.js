@@ -40,7 +40,7 @@ const protect = catchAsync(async (req, res, next) => {
     next();
   });
 
-const admin=catchAsync((req,res,next)=>{
+const admin=catchAsync(async (req,res,next)=>{
     const user= req.user;
     if(user && user.isAdmin)
     {
