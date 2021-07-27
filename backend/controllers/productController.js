@@ -28,8 +28,6 @@ const getProductById = catchAsync(async (req, res,next) => {
 
 const createProduct = catchAsync(async (req, res,next) => {
   
-  console.log("hi");
-  
   const {
     name,
     price,
@@ -52,9 +50,21 @@ const createProduct = catchAsync(async (req, res,next) => {
   res.status(201).json(createdProduct)
 })
 
+const deleteProduct = catchAsync(async (req, res) => {
+  const product = await Product.findById(req.params.id)
+
+  if (product) {
+    await product.remove()
+    res.json({ message: 'Product removed' })
+  } else {
+
+    return next(new AppError('Product not found',404))
+  }
+})
 
 export {
   getProducts,
   getProductById,
-  createProduct
+  createProduct,
+  deleteProduct
 }
