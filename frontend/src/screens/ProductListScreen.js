@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import { LinkContainer } from 'react-router-bootstrap'
 import { Table, Button, Row, Col } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
@@ -36,8 +35,8 @@ const ProductListScreen = ({ history, match }) => {
     }
   }
 
-  const createProductHandler = (product) => {
-    //   CREATE PRODUCT
+  const createProductHandler = () => {
+    history.push('/admin/createProduct')
   }
 
   return (
@@ -76,11 +75,6 @@ const ProductListScreen = ({ history, match }) => {
                 <td>{product.name}</td>
                 <td>${product.price}</td>
                 <td>
-                  <LinkContainer to={`/admin/product/${product._id}/edit`}>
-                    <Button variant='light' className='btn-sm'>
-                      <i className='fas fa-edit'></i>
-                    </Button>
-                  </LinkContainer>
                   <Button
                     variant='danger'
                     className='btn-sm'
