@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Form, Button } from 'react-bootstrap'
@@ -14,7 +15,7 @@ const ProductCreateScreen = ({ history }) => {
   const [image, setImage] = useState('')
   const [countInStock, setCountInStock] = useState(0)
   const [description, setDescription] = useState('')
-  // const [uploading, setUploading] = useState(false)
+  const [uploading, setUploading] = useState(false)
 
   const dispatch = useDispatch()
 
@@ -33,28 +34,31 @@ const ProductCreateScreen = ({ history }) => {
         setDescription('')
   }, [dispatch, history, successCreate])
 
-  // const uploadFileHandler = async (e) => {
-  //   const file = e.target.files[0]
-  //   const formData = new FormData()
-  //   formData.append('image', file)
-  //   setUploading(true)
+  const uploadFileHandler = async (e) => {
+    const file = e.target.files[0]
+    const formData = new FormData()
+    formData.append('image', file)
 
-  //   try {
-  //     const config = {
-  //       headers: {
-  //         'Content-Type': 'multipart/form-data',
-  //       },
-  //     }
+    //console.log(formData)
 
-  //     const { data } = await axios.post('/api/upload', formData, config)
+    setUploading(true)
 
-  //     setImage(data)
-  //     setUploading(false)
-  //   } catch (error) {
-  //     console.error(error)
-  //     setUploading(false)
-  //   }
-  // }
+    try {
+      const config = {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      }
+
+      const { data } = await axios.post('/api/upload', formData, config)
+
+      setImage(data)
+      setUploading(false)
+    } catch (error) {
+      console.error(error)
+      setUploading(false)
+    }
+  }
 
   const submitHandler = (e) => {
     e.preventDefault()
@@ -108,13 +112,13 @@ const ProductCreateScreen = ({ history }) => {
                 value={image}
                 onChange={(e) => setImage(e.target.value)}
               ></Form.Control>
-              {/* <Form.File
+              <Form.File
                 id='image-file'
                 label='Choose File'
                 custom
                 onChange={uploadFileHandler}
               ></Form.File>
-              {uploading && <Loader />} */}
+              {uploading && <Loader />}
             </Form.Group>
 
             <Form.Group controlId='countInStock'>
