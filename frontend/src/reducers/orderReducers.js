@@ -44,6 +44,7 @@ export const orderCreateReducer = (state = {}, action) => {
         }
       case 'RESET_ORDER_DETAILS':
         return {
+          loading: true, orderItems: [], shippingAddress: {}
         }
 
       default:

@@ -31,6 +31,16 @@ const PlaceOrderScreen = ({ history }) => {
   const orderCreate = useSelector((state) => state.orderCreate)
   const { order, success, error } = orderCreate
 
+  const userLogin = useSelector((state) => state.userLogin)
+  const { userInfo } = userLogin
+  
+  useEffect(()=>{
+    if(!userInfo)
+    {
+      history.push('/login');
+    }
+  },[userInfo,history])
+
   useEffect(() => {
     if (success) {
       history.push(`/order/${order._id}`)
@@ -52,9 +62,11 @@ const PlaceOrderScreen = ({ history }) => {
 
   }
 
+
   return (
     <>
-      <Row>
+      {userInfo &&
+      (<Row>
         <Col md={8}>
           <ListGroup variant='flush'>
             <ListGroup.Item>
@@ -133,7 +145,7 @@ const PlaceOrderScreen = ({ history }) => {
             </ListGroup>
           </Card>
         </Col>
-      </Row>
+      </Row>)}
     </>
   )
 }

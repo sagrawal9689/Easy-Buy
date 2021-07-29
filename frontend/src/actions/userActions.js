@@ -33,7 +33,11 @@ export const logout=()=> async(dispatch)=>{
     dispatch({
         type: 'USER_LOGOUT'
     })
-
+    
+    dispatch({
+      type: 'RESET_USER_DETAILS'
+    })
+    
     dispatch({
       type: 'RESET_PAYMENT_METHOD'
     })
@@ -46,9 +50,6 @@ export const logout=()=> async(dispatch)=>{
       type: 'RESET_ORDER_DETAILS'
     })
 
-    dispatch({
-      type: 'RESET_USER_DETAILS'
-    })
 
     dispatch({
       type: 'ORDER_LIST_MY_RESET'

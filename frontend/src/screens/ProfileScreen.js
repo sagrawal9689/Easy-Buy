@@ -40,15 +40,15 @@ const ProfileScreen = ({ location, history }) => {
           <Loader />
         ) : error ? (
           <Message variant='danger'>{error}</Message>
-        ) : (
+        ) :(
         <Card border='info'>
           <Row className='px-1 py-1'>
                 <Col>Name: </Col>
-                <Col>{user.name}</Col>
+                <Col>{userInfo ?(user.name):''}</Col>
           </Row>
           <Row className='px-1 py-1'>
                 <Col>Email: </Col>
-                <Col>{user.email}</Col>
+                <Col>{userInfo ?(user.email):''}</Col>
           </Row>
         </Card>
         )}
