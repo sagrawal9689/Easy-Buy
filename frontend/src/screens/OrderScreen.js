@@ -24,6 +24,11 @@ const OrderScreen = ({ match , history }) => {
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
 
+  useEffect(()=>{
+    dispatch(getOrderDetails(orderId))
+    // eslint-disable-next-line
+  },[])
+
   useEffect(() => {
     if (!userInfo) {
       history.push('/login')
@@ -43,8 +48,8 @@ const OrderScreen = ({ match , history }) => {
     }
 
     if (!order || successPay) {
-      dispatch({ type: 'ORDER_PAY_RESET' })
       dispatch(getOrderDetails(orderId))
+      dispatch({ type: 'ORDER_PAY_RESET' })
     } else if (!order.isPaid) {
       if (!window.paypal) {
         addPayPalScript()

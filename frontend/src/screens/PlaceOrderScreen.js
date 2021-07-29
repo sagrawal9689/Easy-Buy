@@ -35,6 +35,7 @@ const PlaceOrderScreen = ({ history }) => {
     if (success) {
       history.push(`/order/${order._id}`)
       dispatch({ type: 'ORDER_CREATE_RESET' })
+      dispatch({ type: 'RESET_CART' })
     }
     // eslint-disable-next-line
   }, [history, success])
@@ -48,6 +49,7 @@ const PlaceOrderScreen = ({ history }) => {
         totalPrice: cart.totalPrice
       })
     )
+
   }
 
   return (

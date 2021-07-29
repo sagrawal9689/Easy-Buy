@@ -41,6 +41,18 @@ export const logout=()=> async(dispatch)=>{
     dispatch({
       type: 'RESET_SHIPPING_ADDRESS'
     })
+
+    dispatch({
+      type: 'RESET_ORDER_DETAILS'
+    })
+
+    dispatch({
+      type: 'RESET_USER_DETAILS'
+    })
+
+    dispatch({
+      type: 'ORDER_LIST_MY_RESET'
+    })
 }
 
 export const register = (name, email, password) => async (dispatch) => {

@@ -42,10 +42,14 @@ export const cartReducer= (state= { cartItems:[] , shippingAddress: {} , },actio
                 ...state,
                 paymentMethod: null
             }
-            case 'RESET_SHIPPING_ADDRESS':
-                return {
-                    ...state,
-                shippingAddress: {}
+        case 'RESET_SHIPPING_ADDRESS':
+            return {
+            ...state,
+            shippingAddress: {}
+            }
+        case 'RESET_CART':
+            return {
+                cartItems:[] , shippingAddress: {}
                 }
         default:
 
